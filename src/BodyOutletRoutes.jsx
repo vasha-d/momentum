@@ -1,12 +1,12 @@
 import SingleTaskPage from './components/SingleTaskPage/SingleTaskPage.jsx'
-import AllTasksPage from './components/DisplayAllTasksPage/AllTasksPage.jsx'
+import DisplayAllTasksPage from './components/DisplayAllTasksPage/DisplayAllTasksPage.jsx'
 import CreateTaskPage from "./components/CreateTaskPage/CreateTaskPage.jsx";
 import CreateWorkerPage from "./components/CreateWorkerPage/CreateWorkerPage.jsx";
 
 const BodyOutletRoutes = [
     {
       index: true,
-       element: <AllTasksPage></AllTasksPage>
+      element: <DisplayAllTasksPage></DisplayAllTasksPage>,
     },
     {
       path: '/tasks/:taskID',
