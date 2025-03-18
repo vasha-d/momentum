@@ -108,5 +108,30 @@ function useGetTaskByID (id) {
     
 }
 
+function useGetComments (taskID) {
+    
+    let [comments, setComments] = useState(null)
+    let [loading, setLoading] = useState(true)
+    
+    useEffect(() => {
+        let setData = async () => {
+            let res = await fetch(`https://momentum.redberryinternship.ge/api/tasks/${taskID}/comments`,  {
+                headers: {'Authorization': authKey,  "Accept": 'application/json'},        
+            })
+            if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
+            let data = await res.json()
+            console.log(res.status)
+            setComments(data)
+            setLoading(false)   
+        }
 
-export {postTask, useGetPriorities, useGetStatuses, useGetDepartments, useGetTaskByID}
+        setData().catch(error => console.log(error))
+
+    }, [])
+    return {comments, loading}
+}
+
+
+
+
+export {postTask, useGetPriorities, useGetStatuses, useGetDepartments, useGetTaskByID, useGetComments}

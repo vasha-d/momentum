@@ -3,7 +3,6 @@ const authKey = "Bearer 9e721fd9-bc1d-427a-90a4-2f3dc54df7f2"
 
 async function postWorker(worker) {
     console.log('running', worker)
-//// Turn the avatar file into a blob here and try that way
     console.log(worker)
     let response = await fetch('https://momentum.redberryinternship.ge/api/employees', 
         {
@@ -18,6 +17,21 @@ async function postWorker(worker) {
     console.log(response.status)
 }
 
+async function postNewComment(newCommentObj, taskID) {
+  let data = JSON.stringify(newCommentObj)
+  console.log(data)
+  let response = await fetch(`https://momentum.redberryinternship.ge/api/tasks/${taskID}/comments`, 
+      {
+          method: 'POST',
+          headers: {'Authorization': authKey, 'Content-Type': 'application/json', Accept: 'application/json'},
+          body: data
+          
+      }
+
+  )
+  if(response.status >= 400){throw new Error('Error posting worker to API!')}
+  console.log(response.status)
+}
 async function putTaskStatus(newStatus, taskID) {
 
     let data = JSON.stringify({
@@ -46,4 +60,4 @@ async function putTaskStatus(newStatus, taskID) {
 
 
 
-export {postWorker, putTaskStatus}
+export {postWorker, postNewComment, putTaskStatus}

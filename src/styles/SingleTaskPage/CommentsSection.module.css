@@ -1,0 +1,41 @@
+
+
+.commentsSection {
+    background-color: #F8F3FEA6;
+    border: 0.3px solid #DDD2FF;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 741px;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+
+.newComment {
+    width: 651px;
+    height: 135px;
+    border: 0.3px solid #ADB5BD;
+    padding: 18px 20px;
+    resize: none;
+    border-radius: 10px;
+    font-family: inherit;
+
+}
+
+.newComment:focus {
+    font-family: inherit;
+    outline: none;
+}
+
+
+.submitComment {
+    border: none;
+    border-radius: 3vh;
+    color: white;
+    background-color: #8338EC;
+    padding: 8px 20px;
+    width: min-content;
+    margin-left: 530px;
+    position: relative;
+    bottom: 50px;
+}
