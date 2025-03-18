@@ -7,9 +7,17 @@
 
 .wrapperStyle {
     border: 1px solid black;
-    padding: 5vh;
+    padding: 2vh;
     font-size: 0.8rem;
+    cursor: default;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    border-radius: 2vh;
 }
+
 
 .name {
     display: block;
@@ -46,6 +54,8 @@
 .middle {
     display: flex;
     flex-flow: column nowrap;
+    text-align: left;
+    gap: 1vh;
 }
 
 .bottom {
@@ -59,4 +69,8 @@
 }
 .employee > img {
     height: 3vh;
+}
+
+.description {
+    font-size: 0.8rem;
 }

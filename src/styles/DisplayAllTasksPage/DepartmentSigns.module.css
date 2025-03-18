@@ -46,9 +46,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1vh;
+    gap: 5px;
     border: 1px solid;
-    padding: 0;
+    padding: 0 6px;
+    border-radius: 3px;
 }
 .prio1 {
     color: lowPrioC; 

@@ -2,7 +2,7 @@ import styles from '../../styles/DisplayAllTasksPage/DepartmentSigns.module.css'
 
 
 
-export default function Priority ({priority}) {
+export default function PrioritySigns ({priority}) {
 
     let {icon, id, name} = priority
 

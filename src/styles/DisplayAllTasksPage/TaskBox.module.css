@@ -36,7 +36,8 @@
 .taskColumn {
     display: flex;
     flex-flow: column nowrap;
-    width: 35vh;
+    width: 43vh;
+    gap: 3vh;
 }
 
 .taskBox {

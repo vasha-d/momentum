@@ -18,8 +18,32 @@ async function postWorker(worker) {
     console.log(response.status)
 }
 
+async function putTaskStatus(newStatus, taskID) {
+
+    let data = JSON.stringify({
+        status_id: newStatus
+      })
+    console.log(data)
+
+    let response = await fetch(`https://momentum.redberryinternship.ge/api/tasks/${taskID}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': authKey,
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          status_id: newStatus
+        })
+      })
+
+    if(response.status >= 400){throw new Error('Error posting new task status to API!')}
+    console.log(response.status)
+
+}
 
 
 
 
-export {postWorker}
+
+export {postWorker, putTaskStatus}

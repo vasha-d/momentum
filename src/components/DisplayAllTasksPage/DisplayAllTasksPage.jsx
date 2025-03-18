@@ -20,8 +20,6 @@ export default function AllTasksPage () {
     const filteredTasks = filterTasks(tasks, filters)
     return (
         <div>
-            Task List...
-            <Link to="/tasks/1">Go task 1</Link>
             <TaskBox tasks={filteredTasks}></TaskBox>
         </div>
     )

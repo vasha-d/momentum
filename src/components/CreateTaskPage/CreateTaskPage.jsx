@@ -65,7 +65,7 @@ export default function CreateTaskPage () {
                         <option value="1" selected>დასაწყები</option>
                         <option value="2">პროგრესში</option>
                         <option value="3">მზად ტესტირებისთვის</option>
-                        <option value="3">დასრულებული</option>
+                        <option value="4">დასრულებული</option>
                     </select>
 
                     <label htmlFor="department">დეპარტამენტი*</label>

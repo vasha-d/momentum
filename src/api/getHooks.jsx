@@ -86,6 +86,27 @@ function useGetStatuses () {
 
 }
 
+function useGetTaskByID (id) {
+    const [task, setTask] = useState()
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        let setData = async () => {
+            let res = await fetch(`https://momentum.redberryinternship.ge/api/tasks/${id}`,  {
+                headers: {'Authorization': authKey,  "Accept": 'application/json'},        
+            })
+            if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
+            let data = await res.json()
+            
+            setTask(data)
+            setLoading(false)   
+        }
+
+        setData().catch(error => console.log(error))
+
+    }, [])
+    return {task, loading}
+    
+}
 
 
-export {postTask, useGetPriorities, useGetStatuses, useGetDepartments}
+export {postTask, useGetPriorities, useGetStatuses, useGetDepartments, useGetTaskByID}
