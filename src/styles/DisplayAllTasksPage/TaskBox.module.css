@@ -1,0 +1,51 @@
+@value status1C: #F7BC30;
+@value status2C: #FB5607;
+@value status3C: #FF006E;
+@value status4C: #3A86FF;
+
+
+
+.status1 {
+    background-color: status1C;
+}
+
+.status2 {
+    background-color: status2C;
+}
+
+.status3 {
+    background-color: status3C;
+}
+
+.status4 {
+    background-color: status4C;
+}
+
+.taskColumn > h3{
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5vh;
+
+}
+
+.taskColumn {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 35vh;
+}
+
+.taskBox {
+    display: flex;
+    gap: 5vh;
+}
+
+.taskBoxWrapper {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,47 @@
+
+@value status1C: #F7BC30;
+@value status2C: #FB5607;
+@value status3C: #FF006E;
+@value status4C: #3A86FF;
+
+
+.wrapperStyle {
+    border: 1px solid black;
+    padding: 5vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.status1 {
+    border-color: status1C;
+    composes: wrapperStyle;
+}
+
+.status2 {
+    border-color: status2C;
+    composes: wrapperStyle;
+}
+
+.status3 {
+    border-color: status3C;
+    composes: wrapperStyle;
+}
+
+.status4 {
+    border-color: status4C;
+    composes: wrapperStyle;
+}
+
+
+
+
