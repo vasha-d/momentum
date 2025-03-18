@@ -1,14 +1,8 @@
 import styles from "../../styles/DisplayAllTasksPage/SingleTaskCard.module.css"
 import PrioritySigns from './PrioritySigns'
+import { Link } from "react-router-dom"
 
 
-
-function Employee({employee}) {
-
-    let {avatar} = employee
-    
-    return 
-}
 
 export default function SingleTaskCard ({taskObj}) {
 
@@ -19,13 +13,13 @@ export default function SingleTaskCard ({taskObj}) {
         status,
         employee,
         priority,
+        id
         } = taskObj
     console.log(taskObj)
     
     const wrapperStyle = styles[`status${status.id}`]
     return (
-        <div className={wrapperStyle}>
-            
+        <Link className={wrapperStyle} to={`tasks/${id}`}>
             <div className={styles.top}>
                 <PrioritySigns priority={priority}></PrioritySigns>
                 <div className="department"></div>
@@ -34,13 +28,15 @@ export default function SingleTaskCard ({taskObj}) {
             <div className={styles.middle}>
     
                 <div className={styles.name}>{name}</div>
+                <div className={styles.description}>{description}</div>
+            </div>
 
             <div className={styles.bottom}>
                 <div className={styles.employee}>
-                    <img src={taskObj.employee.avatar && "../../../public/employee-icon.png"}/>
+                    <img src={employee.avatar && "../../../public/employee-icon.png"}/>
                 </div>
                 <div className="comments"></div>
             </div>
-        </div>
+        </Link>
     )
 }
