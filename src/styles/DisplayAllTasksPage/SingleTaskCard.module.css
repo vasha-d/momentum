@@ -8,19 +8,13 @@
 .wrapperStyle {
     border: 1px solid black;
     padding: 5vh;
+    font-size: 0.8rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+.name {
+    display: block;
+    font-weight: bold;
+}
 
 .status1 {
     border-color: status1C;
@@ -45,3 +39,24 @@
 
 
 
+.top {
+    display: flex;
+}
+
+.middle {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.employee {
+    
+}
+.employee > img {
+    height: 3vh;
+}

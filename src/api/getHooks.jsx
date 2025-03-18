@@ -18,24 +18,6 @@ async function postTask(task) {
     console.log(response.status)
 }
 
-function getTaskByID(taskID) {
-
-}
-
-function changeTaskStatus(taskID) {
-    
-}
-
-async function getDepartments() {
-
-    let departments = await fetch('https://momentum.redberryinternship.ge/api/departments',  {
-        headers: {'Authorization': authKey,  "Accept": 'application/json'},        
-    })
-
-    return departments
-}
-
-
 function useGetDepartments () {
     const [departments, setDepartments] = useState()
     const [loading, setLoading] = useState(true)
@@ -58,8 +40,52 @@ function useGetDepartments () {
     return {departments, loading}
 
 }
+function useGetPriorities () {
+    const [priorities, setPriorities] = useState()
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        let setData = async () => {
+            let res = await fetch('https://momentum.redberryinternship.ge/api/departments',  {
+                headers: {'Authorization': authKey,  "Accept": 'application/json'},        
+            })
+            if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
+            let data = await res.json()
+       
+            
+            setPriorities(data)
+            setLoading(false)   
+        }
+
+        setData().catch(error => console.log(error))
+
+    }, [])
+    return {priorities, loading}
+
+}
+
+function useGetStatuses () {
+    const [statuses, setStatuses] = useState()
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        let setData = async () => {
+            let res = await fetch('https://momentum.redberryinternship.ge/api/departments',  {
+                headers: {'Authorization': authKey,  "Accept": 'application/json'},        
+            })
+            if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
+            let data = await res.json()
+       
+            
+            setStatuses(data)
+            setLoading(false)   
+        }
+
+        setData().catch(error => console.log(error))
+
+    }, [])
+    return {statuses, loading}
+
+}
 
 
 
-
-export {postTask, getTaskByID, changeTaskStatus, useGetDepartments}
+export {postTask, useGetPriorities, useGetStatuses, useGetDepartments}

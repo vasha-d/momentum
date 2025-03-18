@@ -1,0 +1,74 @@
+
+@value department7C: #FF66A8;
+@value department4C: #FD9A6A;
+@value department5C: #89B6FF;
+@value department6C: #FFD86D;
+@value lowPrioC: #08A508;
+@value medPrioC: #FFBE0B;
+@value highPrioC: #FA4D4D;
+
+
+.departmentStyle {
+    color: white;
+    border-radius: 2vh;
+}
+
+.department7 {
+    background-color: department7C;
+    composes: departmentStyle;
+}
+
+.department4 {
+    background-color: department4C;
+    composes: departmentStyle;
+}
+
+.department5 {
+    background-color: department5C;
+    composes: departmentStyle;
+}
+
+.department6 {
+    background-color: department6C;
+    composes: departmentStyle;
+}
+
+
+.prioIcon {
+    height: 3vh;
+    font-size: 3vh;
+  
+    
+}
+
+.priorityWrapper {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    border: 1px solid;
+    padding: 0;
+}
+.prio1 {
+    color: lowPrioC; 
+    border-color: lowPrioC; 
+    composes: priorityWrapper;
+}
+
+
+.prio2 {
+    color: medPrioC; 
+    border-color: medPrioC; 
+    composes: priorityWrapper;
+}
+ 
+.prio3 {
+    color: highPrioC; 
+    border-color: highPrioC; 
+    composes: priorityWrapper;
+}
+
+
+
+
