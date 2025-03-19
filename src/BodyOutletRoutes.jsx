@@ -16,10 +16,10 @@ const BodyOutletRoutes = [
       path: '/create-task',
       element: <CreateTaskPage></CreateTaskPage>
     },
-    {
-        path: '/create-worker',
-        element: <CreateWorkerPage></CreateWorkerPage>
-    }
+    // {
+    //     path: '/create-worker',
+    //     element: <CreateWorkerPage></CreateWorkerPage>
+    // }
   ]
 
 

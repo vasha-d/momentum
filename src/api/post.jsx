@@ -7,7 +7,7 @@ async function postWorker(worker) {
     let response = await fetch('https://momentum.redberryinternship.ge/api/employees', 
         {
             method: 'POST',
-            headers: {'Authorization': authKey, 'Content-Type': 'multipart/form-data', Accept: 'application/json'},
+            headers: {'Authorization': authKey, Accept: 'application/json'},
             body: worker
             
         }
@@ -62,3 +62,6 @@ async function putTaskStatus(newStatus, taskID) {
 
 
 export {postWorker, postNewComment, putTaskStatus}
+
+
+
