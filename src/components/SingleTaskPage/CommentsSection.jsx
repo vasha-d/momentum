@@ -23,7 +23,6 @@ export default function CommentsSection ({taskID}) {
 
     console.log(comments)
     function handleChange(e) {
-        console.log(e.target.value)
         let newValue = e.target.value
         setNewComment(newValue)
     }

@@ -48,7 +48,10 @@
 
 
 .top {
-    display: flex;
+    display: grid;
+    gap: 10px;
+    align-items: center;
+    grid-template-columns: max-content max-content 1fr
 }
 
 .middle {
@@ -60,12 +63,14 @@
 
 .bottom {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 
-.employee {
-    
+.date {
+    justify-self: end;
+    color: #212529;
 }
 .employee > img {
     height: 3vh;
@@ -73,4 +78,23 @@
 
 .description {
     font-size: 0.8rem;
+}
+
+
+.comments {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.comments > img {
+    height: 2vh;
+}
+.commentsNumber {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 0.4vh;
+    font-size: 0.7rem;
+
 }

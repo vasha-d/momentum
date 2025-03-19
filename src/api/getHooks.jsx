@@ -120,7 +120,6 @@ function useGetComments (taskID) {
             })
             if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
             let data = await res.json()
-            console.log(res.status)
             setComments(data)
             setLoading(false)   
         }

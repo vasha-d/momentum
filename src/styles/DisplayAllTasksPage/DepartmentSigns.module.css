@@ -11,10 +11,20 @@
 .departmentStyle {
     color: white;
     border-radius: 2vh;
+    text-wrap: nowrap;
+    padding: 5px 10px;
+}
+.department1 {
+    background-color: department7C;
+    composes: departmentStyle;
 }
 
-.department7 {
-    background-color: department7C;
+.department2 {
+    background-color: department5C;
+    composes: departmentStyle;
+}
+.department3 {
+    background-color: department6C;
     composes: departmentStyle;
 }
 
@@ -32,6 +42,19 @@
     background-color: department6C;
     composes: departmentStyle;
 }
+
+.department7 {
+    background-color: department7C;
+    composes: departmentStyle;
+}
+
+.department8 {
+    background-color: department4C;
+    composes: departmentStyle;
+}
+
+
+
 
 
 .prioIcon {

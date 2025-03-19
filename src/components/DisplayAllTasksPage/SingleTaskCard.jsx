@@ -1,8 +1,18 @@
 import styles from "../../styles/DisplayAllTasksPage/SingleTaskCard.module.css"
+import DepartmentSigns from "./DepartmentSigns"
 import PrioritySigns from './PrioritySigns'
 import { Link } from "react-router-dom"
+import employeeIcon from '../../assets/employee-icon.png'
+import commentsIcon from '../../assets/comments-icon.svg'
 
 
+
+function formatDate(date) {
+    const newDate = new Date(date);
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(newDate);
+    return formattedDate
+}
 
 export default function SingleTaskCard ({taskObj}) {
 
@@ -13,17 +23,19 @@ export default function SingleTaskCard ({taskObj}) {
         status,
         employee,
         priority,
-        id
+        id,
+        department,
+        total_comments
         } = taskObj
-    console.log(taskObj)
-    
+    console.log(due_date)
+
     const wrapperStyle = styles[`status${status.id}`]
     return (
         <Link className={wrapperStyle} to={`tasks/${id}`}>
             <div className={styles.top}>
                 <PrioritySigns priority={priority}></PrioritySigns>
-                <div className="department"></div>
-                <div className="date">{due_date}</div>
+                <DepartmentSigns id={department.id}></DepartmentSigns>
+                <div className={styles.date}>{formatDate(due_date)}</div>
             </div>
             <div className={styles.middle}>
     
@@ -33,9 +45,14 @@ export default function SingleTaskCard ({taskObj}) {
 
             <div className={styles.bottom}>
                 <div className={styles.employee}>
-                    <img src={employee.avatar && "../../../public/employee-icon.png"}/>
+                    <img src={employee.avatar && employeeIcon}/>
                 </div>
-                <div className="comments"></div>
+                <div className={styles.comments}>
+                    <img src={commentsIcon} alt="" />
+                    <div className={styles.commentsNumber}>
+                        {total_comments}
+                    </div>
+                </div>
             </div>
         </Link>
     )
