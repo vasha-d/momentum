@@ -18,9 +18,6 @@ export default function AllTasksPage () {
     if (loading) {return <>Loading...</>}
     console.log(styles)
     const filteredTasks = filterTasks(tasks, filters)
-    return (
-        <div>
-            <TaskBox tasks={filteredTasks}></TaskBox>
-        </div>
-    )
+    return  <TaskBox tasks={filteredTasks}></TaskBox>
+
 }

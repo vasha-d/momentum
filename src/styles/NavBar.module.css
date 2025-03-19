@@ -1,0 +1,46 @@
+@value purple: #8338EC;
+
+
+.navBar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.momentumContainer {
+    color: purple;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    display: flex;
+    margin-right: auto;
+
+}
+
+.createWorker {
+    border: 1px solid purple;
+    color: #212529;
+    padding: 6px 16px;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+}
+
+.createTask {
+    color: white;
+    background-color: purple;
+    padding: 6px 16px;
+    box-sizing: border-box;
+    border: 1px solid purple;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
