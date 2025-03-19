@@ -3,4 +3,18 @@
 .taskWrapper {
     width: 100%;
     height: auto;
+    padding: 0 10vh;
+}
+
+
+.bodyWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5vh 0;
+}
+
+.signsWrapper {
+    width: 15vh;
+    display: flex;
+    gap: 1vh;
 }

@@ -31,12 +31,13 @@ export default function SingleTaskPage () {
     if (loading) {return <>Loading...</>}
 
     let {priority, name, description, due_date, employee, status, department} = task
-
     return (
-        <>
+        <div className={styles.bodyWrapper}>
             <div className={styles.taskWrapper}>
-                <PrioritySigns priority={priority}></PrioritySigns>
-                <DepartmentSigns id={department.id}></DepartmentSigns>
+                <div className={styles.signsWrapper}>
+                    <PrioritySigns priority={priority}></PrioritySigns>
+                    <DepartmentSigns id={department.id}></DepartmentSigns>
+                </div>
                 <h3 className={styles.name}>{name}</h3>
                 <div className={styles.description}>{description}</div>
                 <div className={styles.detailsWrapper}>
@@ -61,7 +62,7 @@ export default function SingleTaskPage () {
                 </div>
             </div>
             <CommentsSection taskID = {taskID}></CommentsSection>
-        </>
+        </div>
 
     )
 

@@ -31,6 +31,7 @@ async function postNewComment(newCommentObj, taskID) {
   )
   if(response.status >= 400){throw new Error('Error posting worker to API!')}
   console.log(response.status)
+  return response
 }
 async function putTaskStatus(newStatus, taskID) {
 

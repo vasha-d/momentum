@@ -1,25 +1,32 @@
 
 
+.commentsSectionWrapper {
+    padding: 7vh 10vh;
+}
+
 .commentsSection {
     background-color: #F8F3FEA6;
     border: 0.3px solid #DDD2FF;
     display: flex;
     flex-flow: column nowrap;
-    width: 741px;
+    width: 641px;
     align-items: center;
-    padding: 20px 40px;
+    padding: 40px 60px;
 }
 
 
+
+
 .newComment {
-    width: 651px;
-    height: 135px;
+    height: 150px;
     border: 0.3px solid #ADB5BD;
-    padding: 18px 20px;
     resize: none;
     border-radius: 10px;
     font-family: inherit;
-
+    padding: 20px 40px 50px 40px;
+    width: inherit;
+    box-sizing: border-box;
+    border-bottom: white 60px solid;
 }
 
 .newComment:focus {
@@ -35,7 +42,101 @@
     background-color: #8338EC;
     padding: 8px 20px;
     width: min-content;
-    margin-left: 530px;
+    margin-left: 55vh;
     position: relative;
-    bottom: 50px;
+    bottom: 6vh;
+}
+
+
+.commentsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: inherit;
+    box-sizing: border-box;
+}
+
+.commentsHeader {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0 0 3vh 0;
+    display: flex;
+    align-items: center;
+}
+
+.commentsNumber {
+    color:  white;
+    background-color: #8338EC;
+    padding: 2px 12px;
+    border-radius: 20px;
+    margin-left: 8px;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.commentList {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.8vh;
+}
+
+.singleComment {
+    display: flex;
+    gap: 1vh;
+    color: #343A40;
+    margin-right: 0;
+    width: 100%;
+}
+
+.commentBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.commentText {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}
+.authorName {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #021526;
+}
+.authorAvatar {
+    flex-shrink: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 0.3px solid #DDD2FF;
+} 
+.authorAvatar > img {
+    height: inherit;
+}
+
+.replyList {
+    composes: commentList;
+    gap: 0.5vh;
+    padding-left: 0vh;
+}
+
+.reply {
+    color: #8338EC;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    padding: 1vh 0;
+}
+
+.reply > img {
+    height: 1rem;
+}
+
+
+.newReply {
+    composes: newComment;
+    display: flex;
+    width: inherit;
 }

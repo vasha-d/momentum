@@ -108,11 +108,10 @@ function useGetTaskByID (id) {
     
 }
 
-function useGetComments (taskID) {
+function useGetComments (taskID, refresh) {
     
     let [comments, setComments] = useState(null)
     let [loading, setLoading] = useState(true)
-    
     useEffect(() => {
         let setData = async () => {
             let res = await fetch(`https://momentum.redberryinternship.ge/api/tasks/${taskID}/comments`,  {
@@ -121,12 +120,13 @@ function useGetComments (taskID) {
             if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
             let data = await res.json()
             setComments(data)
+            console.log('running again1')
             setLoading(false)   
         }
 
         setData().catch(error => console.log(error))
 
-    }, [])
+    }, [refresh])
     return {comments, loading}
 }
 
