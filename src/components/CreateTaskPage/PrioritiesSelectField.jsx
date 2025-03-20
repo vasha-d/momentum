@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import {createTaskContext} from './CreateTaskPage'
+import {CreateTaskContext} from './CreateTaskPage'
 import { useGetPriorities } from "../../api/getHooks"
 import styles from "../../styles/CreateTaskPage/PrioritiesSelectField.module.css"
 import dropDownIcon from '../../assets/drop-down-icon.svg'
@@ -13,14 +13,14 @@ function OptionList ({priorities, choosing, currentlyChosen, setNewTaskData}) {
 
     function SingleOption ({prio}) {
         function DropIcon () {
-            console.log(prio.id)
+            if (prio.id != currentlyChosen) {return null}
             let styleAttr = choosing ? {'transform' : 'rotateZ(180deg)'} : null
             return <img className={styles.dropDownImg}style={styleAttr} src={dropDownIcon}></img>
          }
    
         return (
-            <div onClick={(e) => (handleSelect(e, prio.id))} data-withinfield={true} className={styles.prioOption}>
-                    <img data-withinfield={true} src={prio.icon} alt="" />
+            <div onClick={(e) => (handleSelect(e, prio.id))} data-priofield={true} className={styles.prioOption}>
+                    <img data-priofield={true} src={prio.icon} alt="" />
                     {prio.name}
                     <DropIcon></DropIcon>
             </div>
@@ -29,16 +29,15 @@ function OptionList ({priorities, choosing, currentlyChosen, setNewTaskData}) {
 
     const list = priorities.map((prio) => <SingleOption key={prio.id} prio={prio}></SingleOption>)
     
-    if (!choosing) return list[currentlyChosen-1]   
 
-    let arrangedList =  [list[1], list[0], list[2]]
+    let arrangedList =  [list.splice(currentlyChosen-1, 1), ...list]
 
-    return  choosing ? arrangedList : list[currentlyChosen]
+    return  choosing ? arrangedList : arrangedList[0]
 }
 
 export default function PrioritiesSelectField() {
 
-    const {newTaskData, setNewTaskData} =  useContext(createTaskContext)
+    const {newTaskData, setNewTaskData} =  useContext(CreateTaskContext)
     const {priorities, loading} = useGetPriorities()
     const [choosing, setChoosing] = useState(false)
     const currentlyChosen = newTaskData.priority_id || 2
@@ -47,7 +46,7 @@ export default function PrioritiesSelectField() {
     }
     useEffect(() => {
         const handleClickOutsideField = (e) => {
-            if (e.target.dataset['withinfield'] == undefined && choosing) {
+            if (e.target.dataset['priofield'] == undefined && choosing) {
                 toggleChoosing()
             }
         }
@@ -62,8 +61,8 @@ export default function PrioritiesSelectField() {
 
     return (
         <>        
-            <label data-withinfield={true} htmlFor="priority_id">პრიორიტეტი*</label>
-            <div data-withinfield={true} className={styles.dropDown} onClick={toggleChoosing}>
+            <div htmlFor="priority_id">პრიორიტეტი*</div>
+            <div data-priofield={true} className={styles.dropDown} onClick={toggleChoosing}>
                 <OptionList 
                     priorities={priorities} choosing={choosing}
                     currentlyChosen={currentlyChosen} setNewTaskData={setNewTaskData}

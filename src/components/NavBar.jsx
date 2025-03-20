@@ -2,12 +2,16 @@ import momentumIcon from '../assets/momentum-icon.svg'
 import { Link } from "react-router-dom"
 import styles from '../styles/NavBar.module.css'
 import plusIcon from '../assets/plus-icon.svg'
-function NavBar({setCreatingWorker} ) {
+import { CreateWorkerContext } from '../App'
+import { useContext } from 'react'
+function NavBar() {
 
+    const {setCreatingWorker} = useContext(CreateWorkerContext)
     function clickCreateWorker () {
 
         setCreatingWorker(worker => !worker)
     }
+
     return (
         <div className={styles.navBar}>
             <Link className={styles.momentumContainer} to='/'>

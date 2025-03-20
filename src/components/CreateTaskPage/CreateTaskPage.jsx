@@ -1,35 +1,34 @@
 import styles from "../../styles/CreateTaskPage/CreateTaskPage.module.css"
 import { createContext, useContext, useState } from "react"
-import { postTask } from "../../api/getHooks"
+import { postTask } from "../../api/post"
 import PrioritiesSelectField from "./PrioritiesSelectField"
 import DepartmentsSelectField from "./DepartmentsSelectField"
-let firstTask = 
-{   
-    id: 876,
-    name: 'შექმენით readme ფაილი',
-    description: 'აღწერეთ შესრულებული დავალება რიდმი ფაილით',
-    due_date: '2025-12-31',
-    status_id: 1,
-    employee_id: 1,
-    priority_id: 1
-  }
+import EmployeeSelectField from "./EmployeeSelectField"
+import StatusSelectField from "./StatusSelectField"
+
   
-function test () {
-    
-    postTask(firstTask)
+
+
+function tomorrow () {
+    const tmrw = new Date()
+    tmrw.setDate(tmrw.getDate() + 1)
+    const formattedDate = tmrw.toISOString().split('T')[0];
+    return formattedDate
 }
 
+
 const startingTaskObj = {
-    name: null,
-    description: null,
-    due_date: null,
-    status_id: null,
-    employee_id: null,
-    priority_id: 2
+    name: '',
+    description: '',
+    date: tomorrow(),
+    status: 1,
+    employee: 1,
+    priority: 2,
+    department: 1,
   }
 
 
-const createTaskContext = createContext()
+const CreateTaskContext = createContext()
 
 export default function CreateTaskPage () {
 
@@ -40,55 +39,65 @@ export default function CreateTaskPage () {
     function onFormChange(e) {
         let newVal = e.target.value
         let addition = {[e.target.id]: newVal}
-        console.log('1')
         setNewTaskData((old) => {
             return {...old, ...addition}
         })
+    }   
+    function handleCreate () {
+    
+        console.log(newTaskData)
+        let formattedObj = {
+            name: newTaskData.name,
+            description: newTaskData.description,
+            due_date: newTaskData.date,
+            status_id: newTaskData.status,
+            employee_id: newTaskData.employee,
+            priority_id: newTaskData.priority
+        }
+        console.log(formattedObj)
+        postTask(formattedObj)
     }
     console.log(newTaskData)
     return (
-        <createTaskContext.Provider value={{newTaskData, onFormChange, setNewTaskData}}>
-            <h1>Create Task</h1>
+        <CreateTaskContext.Provider value={{newTaskData, onFormChange, setNewTaskData}}>
+            <h2>შექმენი ახალი დავალება</h2>
             <div className={styles.taskFormWrapper}>
-                <button onClick={test}>Post a task</button>
-                <form action="">
-                    <fieldset>
-                        <label htmlFor="taskName">სათაური</label>
-                        <input type="text" name="Title" id="taskName" />
-            
-                        <PrioritiesSelectField></PrioritiesSelectField>
-                        <DepartmentsSelectField></DepartmentsSelectField>
-                        {/* <label htmlFor="description">აღწერა</label>
-                        <textarea name="description" id="description"></textarea>
-                        <label htmlFor="status">სტატუსი*</label>
-                        <select name="status" id="status">
-                            <option value="1" selected>დასაწყები</option>
-                            <option value="2">პროგრესში</option>
-                            <option value="3">მზად ტესტირებისთვის</option>
-                            <option value="4">დასრულებული</option>
-                        </select>
+
+                    <fieldset className={styles.taskFieldset}>
+                        <div>
+                            <label htmlFor="name">სათაური</label>
+                            <input type="text" name="name" value={newTaskData.name }id="name" onChange={onFormChange}/>
+                        </div>
+                        <div className={styles.departmentsContainer}>
+                            <DepartmentsSelectField></DepartmentsSelectField>
+                        </div>
+                     
+                        <div className={styles.descriptionContainer}>
+                            <label htmlFor="description">აღწერა</label>
+                            <textarea name="description" value={newTaskData.description}id="description" onChange={onFormChange}></textarea>
+                        </div>
+                        <div className={styles.selectsContainer}>
+                            <div className={styles.prioritiesContainer}>
+                                <PrioritiesSelectField></PrioritiesSelectField>
+                            </div>
+                            <div className={styles.statusContainer}>
+                                <StatusSelectField></StatusSelectField>
+                            </div>
+                        </div>
                         
-                        <label htmlFor="department">დეპარტამენტი*</label>
-                        <select name="department" id="department" >
-                            <option value="1" selected>დიზაინის დეპარტამენტი</option>
-                            <option value="2">ლოტისტიკის დეპარტამენტი</option>
-                            <option value="3">მარკეტინგის დეპარტამენტი</option>
-                            <option value="4">IT დეპარტამენტი</option>
-                            <option value="5">გაყიდვების დეპარტამენტი</option>
-                        </select>
                         
-                        <label htmlFor="employee">პასუხისმგებელი თანამშრომელი*</label>
-                        <select name="employee" id="employee" >
-                            ...
-                        </select>
-            
-                        <label htmlFor="deadline">დედლაინი</label>
-                        <input type="date" name="deadline" id="deadline" /> */}
+                        <div className={styles.employeeContainer}>
+                            <EmployeeSelectField></EmployeeSelectField>
+                        </div>
+                        <div className={styles.dateContainer}>
+                            <label htmlFor="date">დედლაინი</label>
+                            <input type="date" name="date" id="date" value={newTaskData.date} onChange={onFormChange} />
+                            <button className={styles.submitButton}onClick={handleCreate}>Post a task</button>
+                        </div>
                     </fieldset>
-                </form>
             </div>
-        </createTaskContext.Provider>
+        </CreateTaskContext.Provider>
     )
 }
 
-export {createTaskContext}
+export {CreateTaskContext}

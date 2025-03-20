@@ -4,6 +4,8 @@ import { postWorker } from '../../api/post'
 import styles from '../../styles/CreateWorkerPage.module.css'
 import trashIcon from '../../assets/trash-icon.svg'
 import employeeIcon from '../../assets/employee-icon.png'
+import { CreateWorkerContext } from '../../App'
+import { useContext } from 'react'
 
 
 function handleChange (e, setWorkerData) {
@@ -67,9 +69,9 @@ function handleSubmit(e, workerData) {
     postWorker(toSend)
 }
 
-export default function CreateWorkerPage ({creatingWorker, setCreatingWorker}) {
+export default function CreateWorkerPage () {
 
-
+    const {creatingWorker, setCreatingWorker} = useContext(CreateWorkerContext)
     
     let {departments, loading} = useGetDepartments()
     let [workerData, setWorkerData] = useState({

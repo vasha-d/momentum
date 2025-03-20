@@ -1,0 +1,43 @@
+
+
+.dropDownContainer {
+    border: 1px solid #DEE2E6;
+    background-color: white;
+    cursor: pointer;
+    width: 250px;
+    min-height: 30px;
+    padding: 1px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropDownContainer:active {
+    /* transform: scale3d(0.999,0.999,0.999); */
+}
+
+.singleOption:hover {
+    background-color: rgb(247, 247, 247);
+}
+
+.singleOption:active {
+    background-color: rgb(234, 237, 239);
+}
+.singleOption, .chooseEmp {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 30px;
+}
+
+.chooseEmp img {
+    margin-left: auto;
+}
+
+.dropDownImg {
+    margin-left: auto;
+}
+
+.createWorkerButton {
+    background-color: #8338EC;
+    color: white;
+}
