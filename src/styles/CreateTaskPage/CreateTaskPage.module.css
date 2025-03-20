@@ -67,6 +67,11 @@
     align-self: end;
     padding: 10px;
     width: 40%;
+    background-color: #8338EC;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 

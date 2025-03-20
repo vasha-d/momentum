@@ -5,7 +5,15 @@ import { Link } from "react-router-dom"
 import employeeIcon from '../../assets/employee-icon.png'
 import commentsIcon from '../../assets/comments-icon.svg'
 
-
+function truncateDescription (desc) {
+    let noSpaces = desc.replace(/\s+/g, ""); 
+    if (noSpaces.length > 99) {
+        let ellipsisTruncate = desc.slice(0, 100) + '...'
+        return ellipsisTruncate
+    } else {
+        return desc
+    }
+}
 
 function formatDate(date) {
     const newDate = new Date(date);
@@ -27,7 +35,6 @@ export default function SingleTaskCard ({taskObj}) {
         department,
         total_comments
         } = taskObj
-    console.log(due_date)
 
     const wrapperStyle = styles[`status${status.id}`]
     return (
@@ -40,7 +47,9 @@ export default function SingleTaskCard ({taskObj}) {
             <div className={styles.middle}>
     
                 <div className={styles.name}>{name}</div>
-                <div className={styles.description}>{description}</div>
+                <div className={styles.description}>
+                    {truncateDescription(description)}
+                </div>
             </div>
 
             <div className={styles.bottom}>
