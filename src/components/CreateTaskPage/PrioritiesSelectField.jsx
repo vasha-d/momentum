@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from "react"
 import {CreateTaskContext} from './CreateTaskPage'
 import { useGetPriorities } from "../../api/getHooks"
-import styles from "../../styles/CreateTaskPage/PrioritiesSelectField.module.css"
+import classes from "../../styles/CreateTaskPage/PrioritiesSelectField.module.css"
 import dropDownIcon from '../../assets/drop-down-icon.svg'
+import {generalInputField} from '../../styles/CreateTaskPage/CreateTaskPage.module.css'
+
+let styles = {...classes, generalInputField}
 
 function OptionList ({priorities, choosing, currentlyChosen, setNewTaskData}) {
     function handleSelect(e, prioID) {
         setNewTaskData((data) => {
-            return {...data, priority_id: prioID}
+            return {...data, priority: prioID}
         })
     }
 
@@ -40,7 +43,7 @@ export default function PrioritiesSelectField() {
     const {newTaskData, setNewTaskData} =  useContext(CreateTaskContext)
     const {priorities, loading} = useGetPriorities()
     const [choosing, setChoosing] = useState(false)
-    const currentlyChosen = newTaskData.priority_id || 2
+    const currentlyChosen = newTaskData.priority || 2
     function toggleChoosing () {
         setChoosing(c => !c)
     }
@@ -62,7 +65,7 @@ export default function PrioritiesSelectField() {
     return (
         <>        
             <div htmlFor="priority_id">პრიორიტეტი*</div>
-            <div data-priofield={true} className={styles.dropDown} onClick={toggleChoosing}>
+            <div data-priofield={true} className={styles.dropDown + ` ` + styles.generalInputField} onClick={toggleChoosing}>
                 <OptionList 
                     priorities={priorities} choosing={choosing}
                     currentlyChosen={currentlyChosen} setNewTaskData={setNewTaskData}

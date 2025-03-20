@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import {CreateTaskContext} from './CreateTaskPage'
 import { useGetEmployees } from "../../api/getHooks"
-import styles from "../../styles/CreateTaskPage/EmployeeSelectField.module.css"
+import classes from "../../styles/CreateTaskPage/EmployeeSelectField.module.css"
 import dropDownIcon from '../../assets/drop-down-icon.svg'
 import { CreateWorkerContext } from "../../App"
+import {generalInputField} from '../../styles/CreateTaskPage/CreateTaskPage.module.css'
 
+let styles = {...classes, generalInputField}
 function CreateEmployeeButton () {
     const {creatingWorker, setCreatingWorker} = useContext(CreateWorkerContext)
 
@@ -84,7 +86,7 @@ export default function EmployeeSelectField() {
     const {newTaskData, onFormChange} = useContext(CreateTaskContext)
     const {employees, loading} = useGetEmployees()
     const [choosing, setChoosing] = useState(false)
-    
+    const departmentID = newTaskData.department
     function toggleChoosing() {setChoosing(c => !c)}
     
     useEffect(() => {
@@ -103,9 +105,17 @@ export default function EmployeeSelectField() {
     }, [choosing])
     
     if (loading) return null;
-
+    //return disabled input if no department is selected
+    if (departmentID == 0) {
+        return (    
+            <div>
+                <label htmlFor="dis">  პასუხისმგებელი თანამშრომელი*</label>
+                <select name="dis" id="dis" disabled={true} className={styles.generalInputField}></select>
+            </div>
+        )
+    }
     const filteredEmployees = employees.filter((e) => {
-        return e.department.id == newTaskData.department
+        return e.department.id == departmentID
     })  
     const currentlySelected = filteredEmployees.findIndex((emp) => {
         return emp.id == newTaskData.employee}
@@ -115,9 +125,9 @@ export default function EmployeeSelectField() {
     return (
         <>
             <div className={styles.fieldHeader}>
-                პასუხისმგებელი თანამშრომელი*:
+                პასუხისმგებელი თანამშრომელი*
             </div>
-            <div data-empfield={true} onClick={toggleChoosing} className={styles.dropDownContainer}>
+            <div  data-empfield={true} onClick={toggleChoosing} className={styles.dropDownContainer + ` ` + styles.generalInputField}>
                 <SelectField employees={filteredEmployees}
                              currentlySelected={currentlySelected}
                              choosing={choosing}

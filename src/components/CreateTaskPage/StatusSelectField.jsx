@@ -12,7 +12,6 @@ export default function StatusSelectField () {
     const currentValue = newTaskData.status
     if (loading) {return 'loading...';}
     function OptionList () {
-        console.log(statuses)
         let list = statuses.map((stat) => {
             return (
                 <option key={stat.id} value={stat.id}>{stat.name}</option>

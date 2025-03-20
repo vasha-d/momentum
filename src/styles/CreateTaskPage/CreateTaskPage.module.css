@@ -20,6 +20,7 @@
     font-size: 1rem;
     box-sizing: content-box;
     padding: 0 3px;
+    margin-top: 5px;
 }
 
 
@@ -66,4 +67,24 @@
     align-self: end;
     padding: 10px;
     width: 40%;
+}
+
+
+.generalInputField {
+    margin-top: 5px;
+    width: 100%;
+}   
+
+.descriptionHints, .titleHints {
+    font-size: 0.6rem;
+    color: #6C757D;
+    font-weight: 500;
+}
+
+.green {
+    color: rgb(29, 214, 29);
+}
+
+.red {
+    color: red;
 }

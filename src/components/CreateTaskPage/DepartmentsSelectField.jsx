@@ -28,6 +28,7 @@ export default function DepartmentsSelectField () {
         <>
             <label htmlFor="department">დეპარტამენტი*</label>
             <select name="department" value={currentDepartment} id="department" onChange={onFormChange} >
+                <option disabled hidden value={0}>აირჩიე დეპარტამენტი</option>
                 <DepartmentsList departments={departments}
                                  loading={loading}
                 ></DepartmentsList>
