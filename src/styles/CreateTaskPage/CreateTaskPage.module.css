@@ -1,0 +1,17 @@
+
+
+.taskFormWrapper {
+    background-color: #FBF9FFA6;
+    border: 0.3px solid #DDD2FF;
+}
+
+.taskFormWrapper fieldset {
+    border: none;
+}
+
+
+.taskFormWrapper input, .taskFormWrapper textarea {
+    border: 1px solid #DEE2E6;
+    font-family: inherit;
+    display: block;
+}

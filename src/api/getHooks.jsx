@@ -45,7 +45,7 @@ function useGetPriorities () {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         let setData = async () => {
-            let res = await fetch('https://momentum.redberryinternship.ge/api/departments',  {
+            let res = await fetch('https://momentum.redberryinternship.ge/api/priorities',  {
                 headers: {'Authorization': authKey,  "Accept": 'application/json'},        
             })
             if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
@@ -120,7 +120,6 @@ function useGetComments (taskID, refresh) {
             if (res.status >= 400) {throw new Error('Error when fetching departments!')} 
             let data = await res.json()
             setComments(data)
-            console.log('running again1')
             setLoading(false)   
         }
 
@@ -129,6 +128,7 @@ function useGetComments (taskID, refresh) {
     }, [refresh])
     return {comments, loading}
 }
+
 
 
 

@@ -7,7 +7,6 @@ import employeeIcon from '../../assets/employee-icon.png'
 
 
 function handleChange (e, setWorkerData) {
-
     let target = e.target
     let newObj = {}
     let addition = {}
@@ -19,7 +18,6 @@ function handleChange (e, setWorkerData) {
     } else {
         addition = {[`${target.id}`]: target.value}
     }
-
     setWorkerData((data) => {
         let copy = data
         Object.assign(newObj, copy, addition)
@@ -62,10 +60,7 @@ function handleSubmit(e, workerData) {
     toSend.append("surname", workerData.lastName);
     toSend.append("avatar", workerData.avatarFile);
     toSend.append("department_id", workerData.department);
-    console.log(toSend.get('name'))
-    console.log(toSend.get('avatar'))
-    console.log(toSend.get('department_id'))
-    console.log(toSend.get('avatar'))
+
 
 
 
@@ -88,7 +83,7 @@ export default function CreateWorkerPage ({creatingWorker, setCreatingWorker}) {
     if (!creatingWorker) return null
     let {name, lastName, avatar, department} = workerData
     function toggleCreatingWorker () {
-        //!!!!Also removes current data
+        //!!!!Also removes current data if creating...
         if(creatingWorker) {
             setWorkerData({
                 name: '',

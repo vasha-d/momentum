@@ -6,3 +6,7 @@
 #root {
   padding: 0 120px;
 }
+
+html {
+  height: 100vh;
+}
