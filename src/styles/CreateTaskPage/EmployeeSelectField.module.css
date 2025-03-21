@@ -8,6 +8,7 @@
     padding: 1px 5px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .dropDownContainer:active {
@@ -37,6 +38,24 @@
 }
 
 .createWorkerButton {
-    background-color: #8338EC;
-    color: white;
+    color: #8338EC;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.createWorkerButton img {
+    margin-top: 5px;
+}
+
+
+.empOption img {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.empOption {
+    gap: 10px;
 }

@@ -79,3 +79,7 @@
     color: #474747;
     text-wrap: nowrap;
 }
+
+.status .detail {
+    font-size: 0.9rem;
+}

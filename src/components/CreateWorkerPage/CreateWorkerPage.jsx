@@ -6,10 +6,10 @@ import trashIcon from '../../assets/trash-icon.svg'
 import employeeIcon from '../../assets/employee-icon.png'
 import { CreateWorkerContext } from '../../App'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function validate(data, setHintStyles) {
-    console.log(data)
     let {name, lastName, department, avatar} = data
     let {green, red} = styles
     let newStyles = {
@@ -103,13 +103,16 @@ function handleSubmit(e, workerData, toggleCreatingWorker) {
     toSend.append("avatar", workerData.avatarFile);
     toSend.append("department_id", workerData.department);
     toggleCreatingWorker()
-    postWorker(toSend)
+    console.log(workerData)
+    postWorker(toSend).then(
+
+    )
 }
 
 export default function CreateWorkerPage () {
 
     const {creatingWorker, setCreatingWorker} = useContext(CreateWorkerContext)
-    
+    const navigate = useNavigate()
     let {departments, loading} = useGetDepartments()
     let [workerData, setWorkerData] = useState({
         name: '',
@@ -190,7 +193,7 @@ export default function CreateWorkerPage () {
                                         <img className={styles.avatarImg}src={workerData.avatarBlob || employeeIcon} alt="" />
                                 </label>
                                 <img onClick={(e) => {deleteAvatar(e)}}className={styles.deleteAvatar}src={trashIcon} alt="" />
-                                <input accept="image/png, image/jpeg" className={styles.fileInput}type="file" name="avatar" id="avatar" value={avatar}
+                                <input accept="image/png, image/jpeg"  className={styles.fileInput}type="file" name="avatar" id="avatar" value={avatar}
                                 onChange={(e) => {handleChange(e, setWorkerData, setHintStyles)}}/>
                             </div>
                         </div>
@@ -204,7 +207,7 @@ export default function CreateWorkerPage () {
                     </fieldset>
                     <div className={styles.formButtons}>
                         <div className={styles.cancelCreateWorker} onClick={toggleCreatingWorker}  >გაუქმება</div>
-                        <div className={styles.createWorkerButton} onClick={(e) => {handleSubmit(e, workerData, toggleCreatingWorker)}} type='submit' >დაამატე თანამშრომელი</div>
+                        <div className={styles.createWorkerButton} onClick={(e) => {handleSubmit(e, workerData, toggleCreatingWorker, navigate)}} type='submit' >დაამატე თანამშრომელი</div>
                     </div>
                 </form>
             </div>

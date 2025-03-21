@@ -87,3 +87,17 @@
     gap: 8px;
     cursor: pointer;
 }
+
+.empOption label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.empOption img {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    object-fit: cover;
+    object-position: center;
+}

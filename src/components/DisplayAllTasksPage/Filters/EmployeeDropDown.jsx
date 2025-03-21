@@ -24,7 +24,10 @@ export default function EmployeeDropDown ({setFilters, choosing, setChoosing, cu
             return (
                 <div key={employeeId} className={styles.empOption + ` ` + styles.checkBoxWrapper}>
                     <input onChange ={checkBoxChange} checked={checked}type="checkbox" name={employeeId} id={employeeId} />
-                    <label forhtml={employeeId}> {emp.name + ` ` + emp.surname} </label>
+                    <label forhtml={employeeId}> 
+                        <img src={emp.avatar} alt="" />
+                        {emp.name + ` ` + emp.surname} 
+                    </label>
                 </div>
             )
         })

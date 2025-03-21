@@ -5,7 +5,7 @@ import classes from "../../styles/CreateTaskPage/EmployeeSelectField.module.css"
 import dropDownIcon from '../../assets/drop-down-icon.svg'
 import { CreateWorkerContext } from "../../App"
 import {generalInputField} from '../../styles/CreateTaskPage/CreateTaskPage.module.css'
-
+import addWorkerIcon from '../../assets/add-worker-icon.svg'
 let styles = {...classes, generalInputField}
 function CreateEmployeeButton () {
     const {creatingWorker, setCreatingWorker} = useContext(CreateWorkerContext)
@@ -15,7 +15,10 @@ function CreateEmployeeButton () {
     }
 
     return (
-        <div className={styles.createWorkerButton}onClick={toggleCreatingWorker} data-empfield={true}>დაამატე ახალი</div>
+        <div className={styles.createWorkerButton}onClick={toggleCreatingWorker} data-empfield={true}>
+            <img src={addWorkerIcon} alt="" />
+            <div>დაამატე ახალი</div>
+        </div>
     )
 }
 
@@ -35,7 +38,8 @@ function SelectField ({employees, currentlySelected, choosing}) {
             return <img className={styles.dropDownImg}style={styleAttr} src={dropDownIcon}></img>
         }
         return (
-            <div key={employee.id} data-empfield={true} className={styles.singleOption} onClick={() => {handleSelect(employee.id)}}>
+            <div key={employee.id} data-empfield={true} className={styles.singleOption + ` ` + styles.empOption} onClick={() => {handleSelect(employee.id)}}>
+                <img src={employee.avatar} alt="" />
                 {employee.name + ` ` + employee.surname}
                 <DropIcon></DropIcon>
             </div>

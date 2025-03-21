@@ -1,4 +1,4 @@
-const authKey = "Bearer 9e721fd9-bc1d-427a-90a4-2f3dc54df7f2"
+const authKey = "Bearer 9e7c8ad9-3b91-45f3-96a7-e8072ab3a572"
 
 
 async function postTask(task) {
@@ -30,6 +30,9 @@ async function postWorker(worker) {
     )
     if(response.status >= 400){throw new Error('Error posting worker to API!')}
     console.log(response.status)
+    response.then((r) => {if(r.status < 400) {
+      navi
+    }})
 }
 
 async function postNewComment(newCommentObj, taskID) {
