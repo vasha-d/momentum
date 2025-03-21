@@ -3,12 +3,12 @@
 .taskWrapper {
     width: 100%;
     height: auto;
-    padding: 0 10vh;
 }
 
 
 .bodyWrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
     flex-wrap: nowrap;
     padding: 5vh 0;
 }
@@ -17,4 +17,65 @@
     width: 15vh;
     display: flex;
     gap: 1vh;
+}
+
+
+.department {
+    flex-shrink: 0;
+
+    width: 130px;
+    font-size: 1rem;
+}
+
+.priority {
+    padding: 5px 15px;
+}
+
+.detailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.taskWrapper select {
+    font-family: inherit;
+    border: 0.3px solid #CED4DA;
+    padding: 10px 4px;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.employee, .status, .deadline {
+    display: flex;
+    align-items: center;
+}
+
+.detailName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+}
+.detail {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+
+.detail > img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-right: 5px;
+    object-fit: cover;
+}
+
+
+.employeeDep {
+    font-size: 0.7rem;
+    color: #474747;
+    text-wrap: nowrap;
 }

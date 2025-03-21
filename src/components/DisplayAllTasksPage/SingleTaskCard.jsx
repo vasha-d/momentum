@@ -54,7 +54,7 @@ export default function SingleTaskCard ({taskObj}) {
 
             <div className={styles.bottom}>
                 <div className={styles.employee}>
-                    <img src={employee.avatar && employeeIcon}/>
+                    <img src={employee.avatar}/>
                 </div>
                 <div className={styles.comments}>
                     <img src={commentsIcon} alt="" />

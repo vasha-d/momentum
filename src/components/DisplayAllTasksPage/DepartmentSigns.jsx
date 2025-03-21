@@ -11,7 +11,7 @@ import styles from '../../styles/DisplayAllTasksPage/DepartmentSigns.module.css'
 //
 //
 
-export default function DepartmentSigns ({id}) {
+export default function DepartmentSigns ({id, theme = {}}) {
 
 
     let signStyle = styles[`department${id}`]
@@ -28,7 +28,7 @@ export default function DepartmentSigns ({id}) {
     ]
     let name = names[id]
     return (
-        <div className={signStyle}>
+        <div className={signStyle + ` ` + theme.department}>
             {name}
         </div>
     )

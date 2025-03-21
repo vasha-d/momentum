@@ -87,6 +87,8 @@
 .avatarImg {
     height: inherit;
     width: inherit;
+    object-position: center;
+    object-fit: cover;
 }
 
 .deleteAvatar {

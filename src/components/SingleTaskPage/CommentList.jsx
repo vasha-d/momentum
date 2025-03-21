@@ -5,12 +5,12 @@ import NewComment from './NewComment'
 
 function ReplyList ({replies}) {
     if (!replies || replies.length == 0) return null
-    let list = replies.map(reply => {
+    let sorted = [...replies].reverse()
+    let list = sorted.map(reply => {
         return <SingleComment 
         key = {reply.id} comment={reply}>
                 </SingleComment>
     })
-    console.log(list)
 
     return (
         <div className={styles.replyList}>
@@ -36,10 +36,10 @@ function SingleComment ({comment, submitNewComment}) {
 
         const replyTextArea = () => {
             return (
-                <>
+                <div className={styles.textAreaWrapper}>
                     <textarea
                     placeholder='დაწერე კომენტარი' value={newReply || ''}
-                    className={styles.newReply} name="newComment" id="replyComment"
+                    className={styles.newReply} name="newComment" id={`replyComment${comment.id}`}
                     onChange={handleChange}
                     ></textarea>
                     <button onClick={
@@ -51,7 +51,7 @@ function SingleComment ({comment, submitNewComment}) {
                             დააკომენტარე
                     </button>
                   
-                </>
+                </div>
             )
         }
 
@@ -65,7 +65,6 @@ function SingleComment ({comment, submitNewComment}) {
         }
         return replying ? replyTextArea() : replyButton()
     }
-
     return (
         <div className={styles.singleComment}>
             <div className={styles.authorAvatar}>
@@ -92,6 +91,7 @@ export default function CommentList ({comments, submitNewComment}) {
                 </SingleComment>
         
     });
+
     return (
         <div className={styles.commentList}>
             {list}

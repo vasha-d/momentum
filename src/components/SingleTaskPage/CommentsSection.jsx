@@ -33,7 +33,8 @@ export default function CommentsSection ({taskID}) {
         postNewComment(newCommentObj, taskID).then(() => { 
             setRefresh(refresh => !refresh)
         })
-        setRefresh(refresh => !refresh)
+        setNewComment('')
+
     }
     function numberOfComments() {
         let n = comments.length

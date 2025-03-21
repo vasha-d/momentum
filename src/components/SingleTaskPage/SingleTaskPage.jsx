@@ -18,7 +18,7 @@ function handleChange(e, setTaskStatus, taskID) {
 }
 function formatDate(date) {
     const newDate = new Date(date);
-    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const options = { day: "numeric", month: "numeric", year: "numeric" , weekday: 'short' };
     const formattedDate = new Intl.DateTimeFormat("en-US", options).format(newDate);
     return formattedDate
 }
@@ -31,19 +31,24 @@ export default function SingleTaskPage () {
     if (loading) {return <>Loading...</>}
 
     let {priority, name, description, due_date, employee, status, department} = task
+    console.log(employee)
     return (
         <div className={styles.bodyWrapper}>
             <div className={styles.taskWrapper}>
                 <div className={styles.signsWrapper}>
-                    <PrioritySigns priority={priority}></PrioritySigns>
-                    <DepartmentSigns id={department.id}></DepartmentSigns>
+                    <PrioritySigns theme={styles} priority={priority}></PrioritySigns>
+                    <DepartmentSigns theme={styles} id={department.id}></DepartmentSigns>
                 </div>
                 <h3 className={styles.name}>{name}</h3>
                 <div className={styles.description}>{description}</div>
                 <div className={styles.detailsWrapper}>
+                    <h2>დავალების დეტალები</h2>
                     <div className={styles.status}>
-                    <img src={statusIcon} alt="" />
-                        <select name="status" id="status" value={taskStatus || status.id} onChange={(e) => {handleChange(e, setTaskStatus, taskID)}}>
+                        <span className={styles.detailName}>
+                            <img src={statusIcon} alt="" />
+                            <span>სტატუსი</span>
+                        </span>
+                        <select className={styles.detail} name="status" id="status" value={taskStatus || status.id} onChange={(e) => {handleChange(e, setTaskStatus, taskID)}}>
                             <option value="1" >დასაწყები</option>
                             <option value="2">პროგრესში</option>
                             <option value="3">მზად ტესტირებისთვის</option>
@@ -52,12 +57,26 @@ export default function SingleTaskPage () {
 
                     </div>
                     <div className={styles.employee}>
-                        <img src={userIcon} alt="" />
-                        {employee.name + ` ` + employee.surname}
+                        <span className={styles.detailName}>
+                            <img src={userIcon} alt="" />
+                            <span>თანამშრომელი </span>
+                        </span>
+                        <span className={styles.detail}>
+                            <img src={employee.avatar} alt="" />
+                            <span className={styles.employeeInfo}>
+                                <div className={styles.employeeDep}>
+                                    {employee.department.name}
+                                </div>
+                                {employee.name + ` ` + employee.surname}
+                            </span>
+                        </span>
                     </div>
                     <div className={styles.deadline}>
-                        <img src={calendarIcon} alt="" />
-                        {formatDate(due_date)}
+                        <span className={styles.detailName}>
+                            <img src={calendarIcon} alt="" />
+                            <span>დავალების ვადა </span>
+                        </span>
+                        <span className={styles.detail}>{formatDate(due_date)}</span>
                     </div>
                 </div>
             </div>

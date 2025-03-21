@@ -1,7 +1,7 @@
 
 
 .commentsSectionWrapper {
-    padding: 7vh 10vh;
+    padding: 5vh 0;
 }
 
 .commentsSection {
@@ -9,7 +9,7 @@
     border: 0.3px solid #DDD2FF;
     display: flex;
     flex-flow: column nowrap;
-    width: 641px;
+    width: 541px;
     align-items: center;
     padding: 40px 60px;
 }
@@ -42,7 +42,7 @@
     background-color: #8338EC;
     padding: 8px 20px;
     width: min-content;
-    margin-left: 55vh;
+    margin-left: 50vh;
     position: relative;
     bottom: 6vh;
 }
@@ -79,6 +79,7 @@
     flex-direction: column;
     align-items: start;
     gap: 0.8vh;
+    width: 100%;
 }
 
 .singleComment {
@@ -139,4 +140,21 @@
     composes: newComment;
     display: flex;
     width: inherit;
+}
+
+.commentBody .submitComment {
+    margin-left: 43.5vh;
+}
+
+
+.textAreaWrapper {
+    width: inherit;
+    border-bottom: 1px solid #ADB5BD;
+    height: 150px;
+    border-radius: 10px;
+}
+
+
+.newCommentContainer {
+    margin-bottom: 20px;
 }
