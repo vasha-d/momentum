@@ -9,8 +9,6 @@ import Filters from "./Filters/Filters"
 
 function filterTasks (tasks, filters) {
 
-    console.log(filters)
-    console.log(tasks)
     let filtered = tasks
     let deparmentFilters = ['', ...Object.values(filters.dep)]
     let priorityFilters = ['', ...Object.values(filters.prio)]
@@ -44,7 +42,6 @@ function filterTasks (tasks, filters) {
     }
     
 
-    console.log(filtered)
     return filtered
 }
 

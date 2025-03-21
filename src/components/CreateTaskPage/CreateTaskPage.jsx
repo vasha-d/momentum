@@ -5,7 +5,7 @@ import PrioritiesSelectField from "./PrioritiesSelectField"
 import DepartmentsSelectField from "./DepartmentsSelectField"
 import EmployeeSelectField from "./EmployeeSelectField"
 import StatusSelectField from "./StatusSelectField"
-
+import { useNavigate } from "react-router-dom"
   
 
 
@@ -25,29 +25,45 @@ function today () {
     return formattedDate
 }
 
+function storeData (data) {
+    console.log('setting data')
+    let stringified = JSON.stringify(data)
+    localStorage.setItem('taskData', stringified)
+    localStorage.setItem('taskData', stringified)
+    localStorage.getItem('taskData')    
+}
 
 
-const startingTaskObj = {
-    name: '',
-    description: '',
-    date: tomorrow(),
-    status: 1,
-    employee: 1,
-    priority: 2,
-    department: 0,
-  }
 
+function getLocalData () {
+    let startingTaskObj = {}
+    if (localStorage.getItem('taskData') != null) {
+        console.log(localStorage.getItem('taskData').name )
+        startingTaskObj = JSON.parse(localStorage.getItem('taskData'))
+    } else {
+        startingTaskObj = {
+            name: '',
+            description: '',
+            date: tomorrow(),
+            status: 1,
+            employee: 1,
+            priority: 2,
+            department: 0,
+          }
+    }
+    return startingTaskObj
+}
+
+
+getLocalData()
 
 const CreateTaskContext = createContext()
 
 export default function CreateTaskPage () {
-
-
-    
-    const [newTaskData, setNewTaskData] = useState(startingTaskObj)
+    const [newTaskData, setNewTaskData] = useState(getLocalData())
     const [hintStyles, setHintStyles] = useState({})
+    const navigate = useNavigate()
     function validate (data) {
-
         let {name, description, department, employee, date} = data
         let {green, red} = styles
         let nameTyped = name.length > 0
@@ -81,13 +97,18 @@ export default function CreateTaskPage () {
         let allValidated = (nameValidated * descValidated
             * departmentSelected * employeeSelected * deadlineSelected
         )
-        
-
+    
         return allValidated
 
-
     }
-    console.log(newTaskData)
+    useEffect(() => {
+        validate(newTaskData)
+        storeData(newTaskData)
+        
+    }, [newTaskData])
+
+    console.log(localStorage.getItem('taskData'))
+
     function onFormChange(e) {
         let newVal = e.target.value
         let addition = {[e.target.id]: newVal}
@@ -96,7 +117,6 @@ export default function CreateTaskPage () {
         }
         setNewTaskData((old) => {
             let newData = {...old, ...addition} 
-            validate(newData)
             return newData
         })
 
@@ -117,6 +137,9 @@ export default function CreateTaskPage () {
 
             console.log(formattedObj)
             postTask(formattedObj)
+            localStorage.removeItem('taskData')
+            setNewTaskData(getLocalData())
+            navigate("/")
         } else {
             console.log('form not validated')
         }

@@ -141,3 +141,15 @@
     width: 60%;
     font-size: 0.9rem;
 }
+
+.green {
+    color: rgb(7, 211, 61);
+}
+
+.red {
+    color: red;
+}
+
+.hints {
+    font-size: 0.6rem;
+}
