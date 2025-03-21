@@ -45,6 +45,7 @@ function SingleComment ({comment, submitNewComment}) {
                     <button onClick={
                         () => {
                             submitNewComment(newReply, comment.id)
+                            setNewReply('')
                             setReplying(false)
                             }}  
                         className={styles.submitComment}>

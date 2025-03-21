@@ -6,7 +6,6 @@ function TaskColumn ({tasks, status}) {
     let forThisColumn = tasks.filter((t) => {   
         return t.status.id == status
     })
-    console.log(forThisColumn)
     let columnList = forThisColumn.map((taskObj) => {
 
         return <SingleTaskCard key={taskObj.id} taskObj={taskObj}></SingleTaskCard>

@@ -1,0 +1,89 @@
+
+
+@value moduleWidth: 500px;
+@value checkedImg: url("../../assets/checked-icon.svg");
+@value uncheckedImg: url("../../assets/unchecked-icon.svg");
+
+.filtersContainer {
+    display: flex;
+    gap: 30px;
+    width: moduleWidth;
+    border: 1px solid #DEE2E6;
+    padding: 10px 0px;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+.dropDownWrapper {
+
+    border: 0.5px #8338EC solid;
+    border-radius: 10px;
+    position: absolute;
+    width: moduleWidth;
+    padding: 10px 10px;
+    background-color: white;
+    top: 110px;
+    left: 128px;
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 5px;
+}
+
+.prioDropDown, .employeeDropDown, .depDropDown {
+
+    composes: dropDownWrapper;
+}
+
+
+.checkBoxWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+
+.checkBoxWrapper > label {
+    margin-top: 5px;
+    cursor: pointer;
+    
+}
+
+.checkBoxWrapper input::before, .checkBoxWrapper input:checked:before {
+    content: "";
+    color: white;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+    background-color: white;
+    background-image: url("../../assets/unchecked-icon.svg");
+    background-size: contain;
+    cursor: pointer;
+
+}
+
+.checkBoxWrapper input:checked:before {
+
+    background-image: url("../../assets/checked-icon.svg");
+}
+
+
+
+.confirmEmp, .confirmPrio, .confirmDep {
+    background-color: #8338EC;
+    font-family: inherit;
+    color: white;
+    padding: 6px 30px;
+    justify-self: end;
+    border: none;
+    border-radius: 10px;
+}
+
+.filterName {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
